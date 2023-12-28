@@ -16,6 +16,25 @@ body {
     justify-content: space-between;
     padding: 10px;
 }
+.navbar a{
+    color: white;
+}
+.navbar ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none; 
+    display: flex; 
+    justify-content: space-around; 
+}
+
+.navbar li {
+    margin: 0 15px; 
+}
+
+.navbar li a {
+    text-decoration: none;
+    padding: 5px 10px; 
+}
 
 .logo{
     height: 50px;
