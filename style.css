@@ -17,9 +17,12 @@ body {
     background-color: #ffffff;
     border: 1px solid #ddd;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px auto; 
+    width: 50%; 
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
+
 .modal {
     display: none;
     position: fixed;
