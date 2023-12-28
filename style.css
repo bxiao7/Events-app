@@ -21,6 +21,7 @@ body {
     width: 60%; 
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    text-align: center;
 }
 
 .modal {
