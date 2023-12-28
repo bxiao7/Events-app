@@ -3,8 +3,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-image: url(users/bxiao/Downloads/horse.jpeg);
-    background-size: cover;
+    background-size:cover;
     background-repeat: no-repeat;
 }
 .header {
