@@ -18,7 +18,7 @@ body {
     border: 1px solid #ddd;
     padding: 10px;
     margin: 10px auto; 
-    width: 50%; 
+    width: 60%; 
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
