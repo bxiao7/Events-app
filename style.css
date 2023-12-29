@@ -14,21 +14,22 @@ body {
     display: flex;
     align-items: center;
     padding: 10px;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .navbar {
-    padding: 0;
     margin: 0;
     list-style-type: none; 
-    display: flex; 
+    position: absolute;
+    right: 20px;
+    top: 40px;
 }
 
-.navbar a{
+.navbar a {
     color: white;
-    margin:0 15px;
+    margin: 0 15px; 
     text-decoration: none;
-    padding: 5px
+    padding: 10px 5px; 
 }
 
 .navbar a:hover {
@@ -37,8 +38,10 @@ body {
 }
 
 .logo{
-    height: 50px;
-    margin-left: 10px;
+    height: 70px;
+    left: 20px;   
+    position: absolute;
+    top: 14px;
 }
 .event-list {
     padding: 20px;
