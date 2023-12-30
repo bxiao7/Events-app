@@ -47,8 +47,8 @@ body {
     padding: 20px;
 }
 .event {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: #b7d3f3;
+    border: 1px solid #000000;
     padding: 10px;
     margin: 10px auto; 
     width: 60%; 
@@ -71,10 +71,10 @@ body {
     padding-top: 60px;
 }
 .modal-content {
-    background-color: #fefefe;
+    background-color: #b7d3f3;
     margin: 5% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #000000;
     width: 80%;
 }
 .close {
