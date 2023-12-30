@@ -22,15 +22,19 @@
 <div class="event-list">
     <!-- Event 1 -->
     <div class="event" onclick="showModal('modal1')">
-        <h3>January 3rd: Students return</h3>
+        <h3>January 3: Students return</h3>
         <p>Click for more details</p>
     </div>
     <!-- Event 2 -->
     <div class="event" onclick="showModal('modal2')">
-        <h3>January 10th: </h3>
+        <h3>January 10: Instrumental Music Concert</h3>
         <p>Click for more details</p>
     </div>
     <!-- Event 3 -->
+    <div class="event" onclick="showModal('modal3')">
+        <h3>January 11: Junior Parent Night</h3>
+        <p>Click for more details</p>
+    </div>
 </div>
 
 <!------------------------------------------------------------------------------->
@@ -42,10 +46,8 @@
 <div id="modal1" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal1')">&times;</span>
-        <h2>Science Fair Details</h2>
-        <p>Date: March 15th</p>
-        <p>Time: 10 AM - 4 PM</p>
-        <p>Location: School Gymnasium</p>
+        <h2>Details</h2>
+        <p>Welcome back to school!</p>
         
     </div>
 </div>
@@ -54,23 +56,33 @@
 <div id="modal2" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal2')">&times;</span>
-        <h2>Annual Sports Day Details</h2>
-        <p>Date: April 22nd</p>
-        <p>Time: 9 AM - 3 PM</p>
-        <p>Location: School Sports Field</p>
+        <h2>Details</h2>
+        <p>Time: 6:30 PM</p>
+        <p>Location: High School Cafetorium</p>
+        <p>...more information</p>
     </div>
 </div>
 
+<!-- Event 3 -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <h2>Details</h2>
+        <p>Time: 6:30 PM</p>
+        <p>Location: High School Library</p>
+        <p>...more information</p>
+    </div>
+</div>
 <!------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------->
 
 <script>
-    // Function to open the modal
+    // Open modal
     function showModal(modalId) {
         document.getElementById(modalId).style.display = 'block';
     }
 
-    // Function to close the modal
+    // Close modal
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
     }
