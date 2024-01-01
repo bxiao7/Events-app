@@ -46,51 +46,20 @@
       <script src="script.js"></script>
     </div>
 
-    <!-- Event Modals -->
     <div
-      id="modal1"
+      id="event-modal"
       class="modal"
     >
       <div class="modal-content">
         <span
-          class="close"
-          onclick="closeModal('modal1')"
+          onclick="closeModal('event-modal')"
+          class="close-modal-btn"
           >&times;</span
         >
-        <h2>Details</h2>
-        <p>Welcome back to school!</p>
+        <div id="modal-body"></div>
       </div>
     </div>
-    <div
-      id="modal2"
-      class="modal"
-    >
-      <div class="modal-content">
-        <span
-          class="close"
-          onclick="closeModal('modal2')"
-          >&times;</span
-        >
-        <h2>Details</h2>
-        <p>Time: 6:30 PM</p>
-        <p>Location: High School Cafetorium</p>
-      </div>
-    </div>
-    <div
-      id="modal3"
-      class="modal"
-    >
-      <div class="modal-content">
-        <span
-          class="close"
-          onclick="closeModal('modal3')"
-          >&times;</span
-        >
-        <h2>Details</h2>
-        <p>Time: 6:30 PM</p>
-        <p>Location: High School Library</p>
-      </div>
-    </div>
+
     <script>
       function showModal(modalId) {
         document.getElementById(modalId).style.display = "block";

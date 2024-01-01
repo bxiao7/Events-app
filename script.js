@@ -26,19 +26,33 @@ function displayData(data) {
   }
 
   data.forEach((item) => {
-    console.log(item.Date);
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("event");
 
     itemDiv.innerHTML = `
-          <p>Name: ${item.title}</p>
-     
-          <p>Date: ${item.date}</p>
-          <p>Time: ${item.start}</p>
-          <p>Description: ${item.description}</p>
-        
-      `;
+      <p>Name: ${item.title}</p>
+      <p>Date: ${item.date}</p>
+      <p>Time: ${item.start}</p>
+      <p>Location: ${item.location}</p>
+      <button onclick="populateAndShowModal(${JSON.stringify(item)
+        .split('"')
+        .join("&quot;")})">More Info</button>
+    `;
 
     container.appendChild(itemDiv);
   });
+}
+
+function populateAndShowModal(item) {
+  const modalBody = document.getElementById("modal-body");
+
+  modalBody.innerHTML = `
+    <h2>${item.title}</h2>
+    <p>Date: ${item.date}</p>
+    <p>Time: ${item.start}</p>
+    <p>Location: ${item.location}</p>
+    <p>Description: ${item.description}</p>
+  `;
+
+  showModal("event-modal");
 }
