@@ -2,9 +2,8 @@ body {
   font-family: "Open Sans", sans-serif;
   background: #002146; /* Main color as background */
   color: #fff; /* White text for contrast */
-  margin: 0;
-  padding: 0;
   overflow-x: hidden;
+  text-align: center;
 }
 
 /* Header and Navbar Styling */
@@ -12,15 +11,19 @@ body {
   background-color: #002146;
   color: #d2aa57;
   padding: 20px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 15px;
   text-align: center;
+  margin-top: 30px;
 }
 
 .navbar {
   display: flex;
   justify-content: center;
   list-style-type: none;
-  padding: 0;
-  margin-top: 10px;
+  padding: 0 15px;
+  margin: 20px auto;
 }
 
 .navbar a {
@@ -44,7 +47,19 @@ body {
 
 /* Event and Event List Styling --------------------------- */
 .event-list {
-  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0;
+}
+
+#api-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-gap: 20px;
+  width: 70%; /* 70% of the container width */
+  margin: auto;
 }
 
 .event {
@@ -53,10 +68,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px;
-  margin: 20px auto;
-  width: 80%;
-  text-align: left;
-  cursor: pointer;
+  text-align: center;
 }
 
 /* Modal Styling ------------------------------------------ */
@@ -77,7 +89,7 @@ body {
   background-color: #fff;
   color: #002146;
   margin: 5% auto;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   width: 60%;
 }
@@ -159,40 +171,31 @@ body {
 }
 
 @media screen and (max-width: 440px) {
-  .header {
-    text-align: center; /* Center align header content */
-  }
-
-  .navbar {
-    justify-content: center; /* Center navbar items */
-  }
-
-  /* Event and Event List Styling for Mobile */
   .event-list {
-    text-align: center; /* Center align text in event list */
+    display: block;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #api-data {
+    display: block;
   }
 
   .event {
-    margin: 10px auto; /* Center event divs */
-    width: 90%; /* Adjust width */
-  }
-
-  /* Modal Styling for Mobile */
-  .modal-content {
-    margin: 20px auto; /* Center the modal */
-    width: 90%; /* Adjust modal width */
+    margin-bottom: 20px;
   }
 
   .shape-blob {
-    top: 200px; /* Adjust blob position */
-    right: -100px;
+    margin-top: 250px;
     z-index: -1;
   }
 
-  /* Loading Animation Centering */
-  .lds-hourglass {
-    left: 50%; /* Center the animation horizontally */
-    top: 50%; /* Center the animation vertically */
-    transform: translate(-50%, -50%); /* Adjust position */
+  .shape-circle {
+    margin-bottom: -100px;
+    z-index: -1;
+  }
+
+  .modal-content {
+    width: 70%;
   }
 }
