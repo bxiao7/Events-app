@@ -1,98 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Vanguard Events</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body background="vg.jpeg">
-<div class="header">
-    <a href="https://thevanguardschool.com">
-        <img src="VanguardLogo.webp" alt="Home Page" class="logo">
-    </a>
-    <h1>Vanguard Events Bulletin</h1>
-    
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+  </head>
+  <body>
+    <div class="shape-blob"></div>
+    <div class="shape-circle"></div>
+
+    <div class="header">
+      <a href="https://thevanguardschool.com">
+        <img
+          src="VanguardLogo.webp"
+          alt="Home Page"
+          class="logo"
+        />
+      </a>
+      <h1>Vanguard Events Bulletin</h1>
+    </div>
     <div class="navbar">
-    <a href="https://docs.google.com/forms/d/1tFL_u_c1BeShVx19o8667FWtmkWacqFtJjogH8skY8E/edit">Create an Event</a>
+      <a
+        href="https://forms.gle/fZ1yYncRSFKPJWUC6"
+        target="_blank"
+        >Create an Event</a
+      >
     </div>
-</div>
-<!-- EVENT NAMES -->
-<div class="event-list">
-    <!-- Event 1 -->
-    <div class="event" onclick="showModal('modal1')">
-        <h3>January 3: Students return</h3>
-        <p>Click for more details</p>
+    <div class="event-list">
+      <div id="api-data">
+        <div>
+          <div class="lds-hourglass"></div>
+        </div>
+      </div>
+      <script src="script.js"></script>
     </div>
-    <!-- Event 2 -->
-    <div class="event" onclick="showModal('modal2')">
-        <h3>January 10: Instrumental Music Concert</h3>
-        <p>Click for more details</p>
-    </div>
-    <!-- Event 3 -->
-    <div class="event" onclick="showModal('modal3')">
-        <h3>January 11: Junior Parent Night</h3>
-        <p>Click for more details</p>
-    </div>
-</div>
 
-<!------------------------------------------------------------------------------->
-<!------------------------------------------------------------------------------->
-
-<!-- EVENT DESCRIPTIONS -->
-
-<!-- Event 1 -->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <!-- Event Modals -->
+    <div
+      id="modal1"
+      class="modal"
+    >
+      <div class="modal-content">
+        <span
+          class="close"
+          onclick="closeModal('modal1')"
+          >&times;</span
+        >
         <h2>Details</h2>
         <p>Welcome back to school!</p>
-        
+      </div>
     </div>
-</div>
-
-<!-- Event 2 -->
-<div id="modal2" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <div
+      id="modal2"
+      class="modal"
+    >
+      <div class="modal-content">
+        <span
+          class="close"
+          onclick="closeModal('modal2')"
+          >&times;</span
+        >
         <h2>Details</h2>
         <p>Time: 6:30 PM</p>
         <p>Location: High School Cafetorium</p>
-        <p>...more information</p>
+      </div>
     </div>
-</div>
-
-<!-- Event 3 -->
-<div id="modal3" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <div
+      id="modal3"
+      class="modal"
+    >
+      <div class="modal-content">
+        <span
+          class="close"
+          onclick="closeModal('modal3')"
+          >&times;</span
+        >
         <h2>Details</h2>
         <p>Time: 6:30 PM</p>
         <p>Location: High School Library</p>
-        <p>...more information</p>
+      </div>
     </div>
-</div>
-<!------------------------------------------------------------------------------->
-<!------------------------------------------------------------------------------->
-
-<script>
-    // Open modal
-    function showModal(modalId) {
-        document.getElementById(modalId).style.display = 'block';
-    }
-
-    // Close modal
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
-    }
-
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-        if (event.target.className === 'modal') {
-            event.target.style.display = "none";
+    <script>
+      function showModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+      window.onclick = function (event) {
+        if (event.target.className === "modal") {
+          event.target.style.display = "none";
         }
-    }
-</script>
-
-</body>
+      };
+    </script>
+  </body>
 </html>
+
+<!-- Google Sheet as Rest API -->
+<!-- https://www.ravsam.in/blog/turning-a-google-sheet-into-a-rest-api/#:~:text=To%20access%20your%20Google%20Sheet,will%20handle%20the%20GET%20requests.&text=Once%20you%20are%20done%20with,Script%20as%20a%20Web%20App.-->
