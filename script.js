@@ -16,6 +16,18 @@ function fetchData() {
     });
 }
 
+function reformatDate(dateStr) {
+  const dateObj = new Date(dateStr);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return dateObj.toLocaleDateString("en-US", options);
+}
+
+function reformatTime(timeStr) {
+  const dateObj = new Date(timeStr);
+  const options = { hour: "numeric", minute: "numeric", hour12: true };
+  return dateObj.toLocaleTimeString("en-US", options);
+}
+
 function displayData(data) {
   const container = document.getElementById("api-data");
   container.innerHTML = "";
@@ -26,19 +38,40 @@ function displayData(data) {
   }
 
   data.forEach((item) => {
-    console.log(item.Date);
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("event");
 
+    const formattedDate = reformatDate(item.date); // Reformat date
+    const formattedTime = reformatTime(item.start); // Reformat time
+
     itemDiv.innerHTML = `
-          <p>Name: ${item.title}</p>
-     
-          <p>Date: ${item.date}</p>
-          <p>Time: ${item.start}</p>
-          <p>Description: ${item.description}</p>
-        
-      `;
+      <p>Name: ${item.title}</p>
+      <p>Date: ${formattedDate}</p>
+      <p>Time: ${formattedTime}</p>
+      <p>Location: ${item.location}</p>
+      <button onclick="populateAndShowModal(${JSON.stringify(item)
+        .split('"')
+        .join("&quot;")})">More Info</button>
+    `;
 
     container.appendChild(itemDiv);
   });
+}
+
+function populateAndShowModal(item) {
+  const modalBody = document.getElementById("modal-body");
+
+  const formattedDate = reformatDate(item.date); // Reformat date for the modal
+  const formattedStart = reformatTime(item.start); // Reformat time for the modal
+  const formattedEnd = reformatTime(item.end); // Reformat time for the modal
+
+  modalBody.innerHTML = `
+    <h2>${item.title}</h2>
+    <p>Date: ${formattedDate}</p>
+    <p>Time: ${formattedStart} to ${formattedEnd} </p>
+    <p>Location: ${item.location}</p>
+    <p>Description: ${item.description}</p>
+  `;
+
+  showModal("event-modal");
 }
