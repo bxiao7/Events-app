@@ -17,9 +17,6 @@
     />
   </head>
   <body>
-    <div id="api-data">Loading...</div>
-    <script src="script.js"></script>
-
     <div class="shape-blob"></div>
     <div class="shape-circle"></div>
 
@@ -40,31 +37,14 @@
       >
     </div>
     <div class="event-list">
-      <!-- Event 1 -->
-      <div
-        class="event"
-        onclick="showModal('modal1')"
-      >
-        <h3>January 3: Students return</h3>
-        <p>Click for more details</p>
+      <div id="api-data">
+        <div>
+          <div class="lds-hourglass"></div>
+        </div>
       </div>
-      <!-- Event 2 -->
-      <div
-        class="event"
-        onclick="showModal('modal2')"
-      >
-        <h3>January 10: Instrumental Music Concert</h3>
-        <p>Click for more details</p>
-      </div>
-      <!-- Event 3 -->
-      <div
-        class="event"
-        onclick="showModal('modal3')"
-      >
-        <h3>January 11: Junior Parent Night</h3>
-        <p>Click for more details</p>
-      </div>
+      <script src="script.js"></script>
     </div>
+
     <!-- Event Modals -->
     <div
       id="modal1"
