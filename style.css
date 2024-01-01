@@ -115,8 +115,8 @@ body {
   background-color: #fff; /* White for circle */
   border-radius: 50%;
   position: absolute;
-  bottom: -150px;
-  left: -150px;
+  bottom: 150px;
+  left: -200px;
   opacity: 0.5;
 }
 
@@ -130,6 +130,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .lds-hourglass:after {
   content: " ";
   display: block;
@@ -142,6 +143,7 @@ body {
   border-color: #fff transparent #fff transparent;
   animation: lds-hourglass 1.2s infinite;
 }
+
 @keyframes lds-hourglass {
   0% {
     transform: rotate(0);
