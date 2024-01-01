@@ -17,5 +17,31 @@ function fetchData() {
 }
 
 function displayData(data) {
-  document.getElementById("api-data").innerText = JSON.stringify(data, null, 2);
+  const container = document.getElementById("api-data");
+  container.innerHTML = ""; // Clear existing content
+
+  // Check if data is not empty
+  if (data.length === 0) {
+    container.innerHTML = "<p>No data to display.</p>";
+    return;
+  }
+
+  // Create and append elements for each item in the data
+  data.forEach((item) => {
+    console.log(item.Date);
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("event"); // Optional: for styling
+
+    // Assuming 'item' has properties you want to display, for example, 'name' and 'value'
+    itemDiv.innerHTML = `
+          <p>Name: ${item.title}</p>
+     
+          <p>Date: ${item.date}</p>
+          <p>Time: ${item.start}</p>
+          <p>Description: ${item.description}</p>
+        
+      `;
+
+    container.appendChild(itemDiv);
+  });
 }
