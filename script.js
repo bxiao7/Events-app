@@ -45,11 +45,13 @@ function displayData(data) {
     const formattedTime = reformatTime(item.start); // Reformat time
 
     itemDiv.innerHTML = `
-      <p>Name: ${item.title}</p>
+      <p class="cardTitle">${item.title}</p>
       <p>Date: ${formattedDate}</p>
       <p>Time: ${formattedTime}</p>
       <p>Location: ${item.location}</p>
-      <button onclick="populateAndShowModal(${JSON.stringify(item)
+      <button class="moreButton" onclick="populateAndShowModal(${JSON.stringify(
+        item
+      )
         .split('"')
         .join("&quot;")})">More Info</button>
     `;
