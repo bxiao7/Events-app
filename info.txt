@@ -1,0 +1,22 @@
+--Include relevant information for running Events page here--
+
+Submit a request form and spreadsheet:
+    form: https://docs.google.com/forms/d/1tFL_u_c1BeShVx19o8667FWtmkWacqFtJjogH8skY8E/edit
+    spreadsheet: https://docs.google.com/spreadsheets/d/1GIZ3sEvKmW1s-acov7sMiEnHU8vo5j5D2HtTGoDijxY/edit?resourcekey#gid=1113631680
+
+Column names must match their name in the code. Use the following names if column titles get messed up:
+    Timestamp
+    name
+    title
+    date
+    start
+    description
+    Email Address
+    end
+    location
+    Is the sponsor of the event associated with the school?
+    If the sponsor of the event is not associated with the school, please share why the event needs to be put on the events calendar.-->
+
+--Possible additions--
+    - More elaborate description sections for bigger events like prom (dress code, price, etc.)
+    - 
