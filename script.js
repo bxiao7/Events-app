@@ -77,3 +77,4 @@ function populateAndShowModal(item) {
 
   showModal("event-modal");
 }
+
