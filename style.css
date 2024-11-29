@@ -1,12 +1,11 @@
 body {
   font-family: "Open Sans", sans-serif;
-  background: #002146; /* Main color as background */
-  color: #fff; /* White text for contrast */
+  background: #002146;
+  color: #fff;
   overflow-x: hidden;
   text-align: center;
 }
 
-/* Header and Navbar Styling */
 .header {
   background-color: #002146;
   color: #d2aa57;
@@ -16,6 +15,9 @@ body {
   padding: 0 15px;
   text-align: center;
   margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar {
@@ -45,7 +47,6 @@ body {
   height: 70px;
 }
 
-/* Event and Event List Styling --------------------------- */
 .event-list {
   display: flex;
   justify-content: center;
@@ -56,9 +57,9 @@ body {
 
 #api-data {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  width: 70%; /* 70% of the container width */
+  width: 70%;
   margin: auto;
 }
 
@@ -70,9 +71,13 @@ body {
   padding: 20px;
   padding-top: 0;
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
-/* Modal Styling ------------------------------------------ */
+.event:hover {
+  transform: translateY(-5px);
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -109,7 +114,6 @@ body {
   cursor: pointer;
 }
 
-/* Blobs in Background ------------------------------------- */
 .shape-blob {
   width: 200px;
   height: 200px;
@@ -132,7 +136,6 @@ body {
   opacity: 0.5;
 }
 
-/* Loading Animation --------------------------------------- */
 .lds-hourglass {
   display: inline-block;
   position: relative;
@@ -223,3 +226,53 @@ button:hover {
   background-color: #002146;
   color: #d2aa57;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+
+.dropbtn {
+  background-color: #d2aa57;
+  color: #002146;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  right: 0;
+  left: auto;
+}
+
+.dropdown-content a {
+  color: #002146;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #d2aa57;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #002146;
+  color: #d2aa57;
+}
+

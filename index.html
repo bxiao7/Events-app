@@ -2,20 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Courser Events</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="style.css"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="shape-blob"></div>
@@ -23,58 +13,33 @@
 
     <div class="header">
       <a href="https://thevanguardschool.com">
-        <img
-          src="courser.jpeg"
-          alt="Home Page"
-          class="logo"
-        />
+        <img src="courser.jpeg" alt="Home Page" class="logo" />
       </a>
-      <h1>Upcoming Events<h1>
-
+      <h1>Upcoming Events</h1>
+      <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+          <a href="#" id="events-link">Events</a>
+          <a href="#" id="announcements-link">Announcements</a>
+        </div>
+      </div>
     </div>
-    <div class="navbar">
-    
-    </div>
+    <div class="navbar"></div>
     <div class="event-list">
       <div id="api-data">
         <div>
           <div class="lds-hourglass"></div>
         </div>
       </div>
-      <script src="script.js"></script>
     </div>
 
-    <div
-      id="event-modal"
-      class="modal"
-    >
+    <div id="event-modal" class="modal">
       <div class="modal-content">
-        <span
-          onclick="closeModal('event-modal')"
-          class="close-modal-btn"
-          >&times;</span
-        >
+        <span onclick="closeModal('event-modal')" class="close-modal-btn">&times;</span>
         <div id="modal-body"></div>
       </div>
     </div>
 
-    <script>
-      function showModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-      }
-      function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-      }
-      window.onclick = function (event) {
-        if (event.target.className === "modal") {
-          event.target.style.display = "none";
-        }
-      };
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
-
-<!-- Google Sheet as Rest API -->
-<!-- https://www.ravsam.in/blog/turning-a-google-sheet-into-a-rest-api/#:~:text=To%20access%20your%20Google%20Sheet,will%20handle%20the%20GET%20requests.&text=Once%20you%20are%20done%20with,Script%20as%20a%20Web%20App.-->
-
-
