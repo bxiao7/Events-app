@@ -111,6 +111,7 @@ document.getElementById('events-link').addEventListener('click', function(e) {
     currentPage = 'events';
     fetchData();
   }
+  updatePageTitle('Upcoming Events');
 });
 
 document.getElementById('announcements-link').addEventListener('click', function(e) {
@@ -119,6 +120,7 @@ document.getElementById('announcements-link').addEventListener('click', function
     currentPage = 'announcements';
     fetchAnnouncements();
   }
+  updatePageTitle('Announcements');
 });
 
 function fetchAnnouncements() {
@@ -177,5 +179,9 @@ function showAnnouncementModal(announcement) {
   `;
 
   showModal("event-modal");
+}
+
+function updatePageTitle(title) {
+  document.getElementById('page-title').textContent = title;
 }
 
