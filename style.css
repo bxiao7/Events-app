@@ -276,3 +276,10 @@ button:hover {
   color: #d2aa57;
 }
 
+.main-heading {
+  font-size: 3rem;
+  color: #d2aa57;
+  text-align: center;
+  margin: 2rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
