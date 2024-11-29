@@ -1,16 +1,27 @@
 let allData = [];
 let currentPage = 'events';
+let dataCache = {
+  events: null,
+  announcements: null
+};
 
 fetchData();
 
 function fetchData() {
+  if (dataCache.events) {
+    displayData(dataCache.events);
+    return;
+  }
+
+  document.getElementById("api-data").innerHTML = '<div class="lds-hourglass"></div>';
+
   fetch(
     "https://script.google.com/macros/s/AKfycbw_qC2Wvw1j4vpIJ6Te0q8ljptt6kHNIW8WKF3ScPs-p5vx5VG-Zxs-H1etxaQsAy0A/exec?path=requests"
   )
     .then((response) => response.json())
     .then((data) => {
-      allData = data.filter((item) => item.Display === true);
-      displayData(allData);
+      dataCache.events = data.filter((item) => item.Display === true);
+      displayData(dataCache.events);
     })
     .catch((error) => {
       document.getElementById("api-data").innerText = "Error: " + error;
@@ -96,24 +107,37 @@ window.onclick = function (event) {
 // Add event listeners for the dropdown menu
 document.getElementById('events-link').addEventListener('click', function(e) {
   e.preventDefault();
-  currentPage = 'events';
-  fetchData();
+  if (currentPage !== 'events') {
+    currentPage = 'events';
+    fetchData();
+  }
 });
 
 document.getElementById('announcements-link').addEventListener('click', function(e) {
   e.preventDefault();
-  currentPage = 'announcements';
-  fetchAnnouncements();
+  if (currentPage !== 'announcements') {
+    currentPage = 'announcements';
+    fetchAnnouncements();
+  }
 });
 
 function fetchAnnouncements() {
+  if (dataCache.announcements) {
+    displayAnnouncements(dataCache.announcements);
+    return;
+  }
+
+  document.getElementById("api-data").innerHTML = '<div class="lds-hourglass"></div>';
+
   // Simulating fetching announcements
-  const announcements = [
-    { id: 1, title: "New Course Offerings", date: "2023-07-01", content: "We are excited to announce new courses for the upcoming semester." },
-    { id: 2, title: "Campus Renovation Update", date: "2023-07-15", content: "The library renovation is progressing well." },
-    { id: 3, title: "Guest Lecture Series", date: "2023-08-01", content: "We are honored to host Dr. Jane Smith for a series of guest lectures." },
-  ];
-  displayAnnouncements(announcements);
+  setTimeout(() => {
+    dataCache.announcements = [
+      { id: 1, title: "New Course Offerings", date: "2023-07-01", content: "We are excited to announce new courses for the upcoming semester." },
+      { id: 2, title: "Campus Renovation Update", date: "2023-07-15", content: "The library renovation is progressing well." },
+      { id: 3, title: "Guest Lecture Series", date: "2023-08-01", content: "We are honored to host Dr. Jane Smith for a series of guest lectures." },
+    ];
+    displayAnnouncements(dataCache.announcements);
+  }, 300); // Simulating a short delay
 }
 
 function displayAnnouncements(announcements) {
@@ -154,3 +178,4 @@ function showAnnouncementModal(announcement) {
 
   showModal("event-modal");
 }
+
