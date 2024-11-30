@@ -1,4 +1,7 @@
-let allData = [];
+let allData = {
+  events: [],
+  announcements: []
+};
 let currentPage = 'events';
 let dataCache = {
   events: null,
@@ -8,8 +11,16 @@ let dataCache = {
 fetchData();
 
 function fetchData() {
+  if (currentPage === 'events') {
+    fetchEvents();
+  } else {
+    fetchAnnouncements();
+  }
+}
+
+function fetchEvents() {
   if (dataCache.events) {
-    displayData(dataCache.events);
+    displayData(dataCache.events, 'events');
     return;
   }
 
@@ -21,7 +32,28 @@ function fetchData() {
     .then((response) => response.json())
     .then((data) => {
       dataCache.events = data.filter((item) => item.Display === true);
-      displayData(dataCache.events);
+      displayData(dataCache.events, 'events');
+    })
+    .catch((error) => {
+      document.getElementById("api-data").innerText = "Error: " + error;
+    });
+}
+
+function fetchAnnouncements() {
+  if (dataCache.announcements) {
+    displayData(dataCache.announcements, 'announcements');
+    return;
+  }
+
+  document.getElementById("api-data").innerHTML = '<div class="lds-hourglass"></div>';
+
+  fetch(
+    "https://script.google.com/macros/s/AKfycbwYour_Google_Script_ID_Here/exec?path=announcements"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      dataCache.announcements = data.filter((item) => item.Display === true);
+      displayData(dataCache.announcements, 'announcements');
     })
     .catch((error) => {
       document.getElementById("api-data").innerText = "Error: " + error;
@@ -40,12 +72,12 @@ function reformatTime(timeStr) {
   return dateObj.toLocaleTimeString("en-US", options);
 }
 
-function displayData(data) {
+function displayData(data, type) {
   const container = document.getElementById("api-data");
   container.innerHTML = "";
 
   if (data.length === 0) {
-    container.innerHTML = "<p>No data to display.</p>";
+    container.innerHTML = `<p>No ${type} to display.</p>`;
     return;
   }
 
@@ -54,39 +86,53 @@ function displayData(data) {
     itemDiv.classList.add("event");
 
     const formattedDate = reformatDate(item.date);
-    const formattedTime = reformatTime(item.start);
 
-    itemDiv.innerHTML = `
+    let itemContent = `
       <p class="cardTitle">${item.title}</p>
       <p>Date: ${formattedDate}</p>
-      <p>Time: ${formattedTime}</p>
-      <p>Location: ${item.location}</p>
-      <button class="moreButton" onclick="populateAndShowModal(${JSON.stringify(
-        item
-      )
-        .split('"')
-        .join("&quot;")})">More Info</button>
     `;
 
+    if (type === 'events') {
+      const formattedTime = reformatTime(item.start);
+      itemContent += `
+        <p>Time: ${formattedTime}</p>
+        <p>Location: ${item.location}</p>
+      `;
+    }
+
+    itemContent += `
+      <button class="moreButton" onclick="populateAndShowModal(${JSON.stringify(item).split('"').join("&quot;")}, '${type}')">
+        ${type === 'events' ? 'More Info' : 'Read More'}
+      </button>
+    `;
+
+    itemDiv.innerHTML = itemContent;
     container.appendChild(itemDiv);
   });
 }
 
-function populateAndShowModal(item) {
+function populateAndShowModal(item, type) {
   const modalBody = document.getElementById("modal-body");
 
   const formattedDate = reformatDate(item.date);
-  const formattedStart = reformatTime(item.start);
-  const formattedEnd = reformatTime(item.end);
 
-  modalBody.innerHTML = `
+  let modalContent = `
     <h2>${item.title}</h2>
     <p>Date: ${formattedDate}</p>
-    <p>Time: ${formattedStart} to ${formattedEnd} </p>
-    <p>Location: ${item.location}</p>
-    <p>Description: ${item.description}</p>
   `;
 
+  if (type === 'events') {
+    const formattedStart = reformatTime(item.start);
+    const formattedEnd = reformatTime(item.end);
+    modalContent += `
+      <p>Time: ${formattedStart} to ${formattedEnd}</p>
+      <p>Location: ${item.location}</p>
+    `;
+  }
+
+  modalContent += `<p>${type === 'events' ? 'Description' : 'Content'}: ${item.description || item.content}</p>`;
+
+  modalBody.innerHTML = modalContent;
   showModal("event-modal");
 }
 
@@ -118,68 +164,10 @@ document.getElementById('announcements-link').addEventListener('click', function
   e.preventDefault();
   if (currentPage !== 'announcements') {
     currentPage = 'announcements';
-    fetchAnnouncements();
+    fetchData();
   }
   updatePageTitle('Announcements');
 });
-
-function fetchAnnouncements() {
-  if (dataCache.announcements) {
-    displayAnnouncements(dataCache.announcements);
-    return;
-  }
-
-  document.getElementById("api-data").innerHTML = '<div class="lds-hourglass"></div>';
-
-  // Simulating fetching announcements
-  setTimeout(() => {
-    dataCache.announcements = [
-      { id: 1, title: "New Course Offerings", date: "2023-07-01", content: "We are excited to announce new courses for the upcoming semester." },
-      { id: 2, title: "Campus Renovation Update", date: "2023-07-15", content: "The library renovation is progressing well." },
-      { id: 3, title: "Guest Lecture Series", date: "2023-08-01", content: "We are honored to host Dr. Jane Smith for a series of guest lectures." },
-    ];
-    displayAnnouncements(dataCache.announcements);
-  }, 300); // Simulating a short delay
-}
-
-function displayAnnouncements(announcements) {
-  const container = document.getElementById("api-data");
-  container.innerHTML = "";
-
-  if (announcements.length === 0) {
-    container.innerHTML = "<p>No announcements to display.</p>";
-    return;
-  }
-
-  announcements.forEach((item) => {
-    const itemDiv = document.createElement("div");
-    itemDiv.classList.add("event");
-
-    const formattedDate = reformatDate(item.date);
-
-    itemDiv.innerHTML = `
-      <p class="cardTitle">${item.title}</p>
-      <p>Date: ${formattedDate}</p>
-      <button class="moreButton" onclick="showAnnouncementModal(${JSON.stringify(item).split('"').join("&quot;")})">Read More</button>
-    `;
-
-    container.appendChild(itemDiv);
-  });
-}
-
-function showAnnouncementModal(announcement) {
-  const modalBody = document.getElementById("modal-body");
-
-  const formattedDate = reformatDate(announcement.date);
-
-  modalBody.innerHTML = `
-    <h2>${announcement.title}</h2>
-    <p>Date: ${formattedDate}</p>
-    <p>${announcement.content}</p>
-  `;
-
-  showModal("event-modal");
-}
 
 function updatePageTitle(title) {
   document.getElementById('page-title').textContent = title;
