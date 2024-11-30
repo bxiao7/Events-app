@@ -9,12 +9,10 @@ body {
 .header {
   background-color: #002146;
   color: #d2aa57;
-  padding: 20px;
-  width: 90%;
-  margin: 0 auto;
-  padding: 0 15px;
-  text-align: center;
-  margin-top: 30px;
+  padding: 20px 5%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +42,8 @@ body {
 }
 
 .logo {
-  height: 70px;
+  height: 50px;
+  max-width: 100%;
 }
 
 .event-list {
@@ -283,3 +282,24 @@ button:hover {
   margin: 2rem 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 15px 5%;
+  }
+  
+  .logo {
+    margin-bottom: 10px;
+  }
+  
+  #page-title {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .dropdown {
+    margin-top: 10px;
+  }
+}
+
